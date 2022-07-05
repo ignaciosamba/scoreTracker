@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/football"
+        android:icon="@drawable/ic_football_bottom_menu"
+        android:title="Football Leagues" />
+    <item
+        android:id="@+id/basketball"
+        android:icon="@drawable/ic_basketball_bottom_menu"
+        android:title="Basketball Leagues" />
+    <item
+        android:id="@+id/others"
+        android:icon="@drawable/ic_othersports_bottom_menu"
+        android:title="Others Leagues" />
+
+
+</menu>

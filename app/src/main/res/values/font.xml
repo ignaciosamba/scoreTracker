@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="font__sf_alternative_regular" translatable="false">proxima-nova-regular.otf</string>
+    <string name="font__sf_alternative_bold" translatable="false">proxima-nova-bold.otf</string>
+    <string name="font__sf_alternative_bold_italic" translatable="false">proxima-nova-bold-italic.otf</string>
+</resources>
