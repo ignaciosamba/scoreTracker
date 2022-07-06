@@ -69,7 +69,6 @@ class FavoritesActivity : AppCompatActivity() {
         }
     }
 
-
     private fun showBottomNav() {
         navBottomController.visibility = View.VISIBLE
     }

@@ -32,4 +32,8 @@ object DataBases {
     @Singleton
     @Provides
     fun provideTeamsDetailsDao(db: LeaguesDataBase) = db.teamsDetailsDao()
+
+    @Singleton
+    @Provides
+    fun provideFavoriteTeamsDao(db: LeaguesDataBase) = db.favoriteTeamsDao()
 }

@@ -1,9 +1,6 @@
 package com.ignacio.scoretracker.di
 
-import com.ignacio.scoretracker.database.dao.FavoriteLeaguesDao
-import com.ignacio.scoretracker.database.dao.LeagueDao
-import com.ignacio.scoretracker.database.dao.LeagueDetailsDao
-import com.ignacio.scoretracker.database.dao.TeamsDetailsDao
+import com.ignacio.scoretracker.database.dao.*
 import com.ignacio.scoretracker.select_favorites.network.FavoritesRemoteDataSource
 import com.ignacio.scoretracker.select_favorites.repository.FavoriteLeaguesRepository
 import com.ignacio.scoretracker.select_favorites.repository.TeamsFavoriteRepository
@@ -36,6 +33,8 @@ object Repositories {
     @Provides
     fun provideFavoriteTeamsRepository(teamsDetailsDao : TeamsDetailsDao,
                                        leaguesFavoritesDao: FavoriteLeaguesDao,
+                                       favoriteTeamsDao: FavoriteTeamsDao,
                                        favoritesRemoteDataSource: FavoritesRemoteDataSource
-    ) = TeamsFavoriteRepository(teamsDetailsDao, leaguesFavoritesDao, favoritesRemoteDataSource)
+    ) = TeamsFavoriteRepository(teamsDetailsDao, leaguesFavoritesDao,
+        favoriteTeamsDao, favoritesRemoteDataSource)
 }
