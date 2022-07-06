@@ -22,5 +22,15 @@
                 app:argType="string" />
         </action>
 
+        <action
+            android:id="@+id/goToTeamsFavorites"
+            app:destination="@+id/favoritesTeamsFragment">
+        </action>
+
     </fragment>
+    <fragment
+        android:id="@+id/favoritesTeamsFragment"
+        android:name="com.ignacio.scoretracker.select_favorites.ui.FavoritesTeamsFragment"
+        android:label="FavoritesTeamsFragment" />
+
 </navigation>

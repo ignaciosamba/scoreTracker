@@ -3,8 +3,8 @@ package com.ignacio.scoretracker.splash.repository
 import com.ignacio.scoretracker.database.dao.LeagueDao
 import com.ignacio.scoretracker.database.dao.LeagueDetailsDao
 import com.ignacio.scoretracker.splash.network.InitLeagueRemoteDataSource
-import com.ignacio.scoretracker.splash.network.performGetInitLeaguesOperation
-import com.ignacio.scoretracker.splash.network.performGetInitListLeaguesOperation
+import com.ignacio.scoretracker.network.performGetInitLeaguesOperation
+import com.ignacio.scoretracker.network.performGetInitListLeaguesOperation
 import javax.inject.Inject
 
 class InitLeaguesRepository @Inject constructor(

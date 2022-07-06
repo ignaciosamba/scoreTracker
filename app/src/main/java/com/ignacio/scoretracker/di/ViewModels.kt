@@ -3,6 +3,8 @@ package com.ignacio.scoretracker.di
 import com.ignacio.scoretracker.database.dao.LeagueDao
 import com.ignacio.scoretracker.database.dao.LeagueDetailsDao
 import com.ignacio.scoretracker.select_favorites.repository.FavoriteLeaguesRepository
+import com.ignacio.scoretracker.select_favorites.repository.TeamsFavoriteRepository
+import com.ignacio.scoretracker.select_favorites.ui.FavoriteTeamsViewModel
 import com.ignacio.scoretracker.select_favorites.ui.FavoritesLeagueViewModel
 import com.ignacio.scoretracker.splash.network.InitLeagueRemoteDataSource
 import com.ignacio.scoretracker.splash.repository.InitLeaguesRepository
@@ -25,4 +27,9 @@ object ViewModels {
     @ViewModelScoped
     fun providesFavoriteLeaguesViewModel(repository: FavoriteLeaguesRepository):
             FavoritesLeagueViewModel = FavoritesLeagueViewModel(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun providesFavoriteTeamsViewModel(repository: TeamsFavoriteRepository):
+            FavoriteTeamsViewModel = FavoriteTeamsViewModel(repository)
 }

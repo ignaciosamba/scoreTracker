@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.ignacio.scoretracker.select_favorites.entities.FavoriteLeagues
 import com.ignacio.scoretracker.select_favorites.repository.FavoriteLeaguesRepository
 import com.ignacio.scoretracker.splash.entities.LeagueDetails
@@ -23,7 +22,7 @@ class FavoritesLeagueViewModel @Inject constructor(
 
     private var _leagues = MutableLiveData<List<LeagueDetails>>()
 
-    private var listOfFavorites = ArrayList<String>()
+    private var listOfFavoritesIds = ArrayList<String>()
 
     val leagues: LiveData<List<LeagueDetails>>
         get() = _leagues
@@ -39,7 +38,7 @@ class FavoritesLeagueViewModel @Inject constructor(
                 try {
                     val listDetailLeagues = repository.getLeaguesBySport(sport)
                     listDetailLeagues.forEach{
-                        if (listOfFavorites.contains(it.idLeague)) {
+                        if (listOfFavoritesIds.contains(it.idLeague)) {
                             it.isSelectedAsFavorite = true
                         }
                     }
@@ -51,10 +50,12 @@ class FavoritesLeagueViewModel @Inject constructor(
         }
     }
 
-    fun getAllFavoritesLeagues(){
-        CoroutineScope(Dispatchers.IO).launch{
+    fun getAllFavoritesLeagues() {
+        CoroutineScope(Dispatchers.IO).launch {
             coroutineScope {
-                listOfFavorites.addAll(repository.getAllFavoriteLeague())
+                repository.getAllFavoriteLeague().forEach {
+                    listOfFavoritesIds.add(it.idLeague)
+                }
             }
         }
     }

@@ -7,5 +7,6 @@ import com.ignacio.scoretracker.splash.entities.LeagueDetails
 @Entity(tableName = "favoriteLeagues")
 data class FavoriteLeagues (
     @PrimaryKey
-    val idLeague : String
+    val idLeague : String,
+    val nameLeague : String?
 )

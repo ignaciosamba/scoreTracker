@@ -15,5 +15,5 @@ interface FavoriteLeaguesDao {
     fun deleteFavoriteLeague(leagueId : String)
 
     @Query("SELECT * FROM favoriteLeagues")
-    fun getFavoriteLeagues() : List<String>
+    fun getFavoriteLeagues() : List<FavoriteLeagues>
 }

@@ -2,6 +2,7 @@ package com.ignacio.scoretracker.select_favorites
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
@@ -24,6 +25,7 @@ import kotlin.math.log
 @AndroidEntryPoint
 class FavoritesActivity : AppCompatActivity() {
 
+    private lateinit var navBottomController: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,8 +38,16 @@ class FavoritesActivity : AppCompatActivity() {
 
         val appBarConfiguration: AppBarConfiguration = AppBarConfiguration(navController.graph)
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
-
+        navBottomController = binding.bottomNavigationView
         binding.bottomNavigationView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.favoritesLeagueFragment -> showBottomNav()
+                R.id.favoritesTeamsFragment -> hideBottomNav()
+                else -> hideBottomNav()
+            }
+        }
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.football -> {
@@ -57,6 +67,15 @@ class FavoritesActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+
+    private fun showBottomNav() {
+        navBottomController.visibility = View.VISIBLE
+    }
+
+    private fun hideBottomNav() {
+        navBottomController.visibility = View.GONE
     }
 
 }

@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ignacio.scoretracker.R
 import com.ignacio.scoretracker.databinding.FavoriteLeagueScreenFragmentBinding
 import com.ignacio.scoretracker.select_favorites.entities.FavoriteLeagues
 import com.ignacio.scoretracker.splash.entities.LeagueDetails
@@ -64,15 +67,17 @@ class FavoritesLeagueFragment : Fragment(), LeagueAdapter.FavoriteLeaguesItemLis
     }
 
     override fun onClickedLeague(league: LeagueDetails, mustSave : Boolean) {
+        val favoriteLeague = FavoriteLeagues(league.idLeague, league.strLeague)
         if (mustSave) {
-            viewModel.insertNewFavoriteLeague(FavoriteLeagues(league.idLeague))
+            viewModel.insertNewFavoriteLeague(favoriteLeague)
         } else {
-            viewModel.deleteNewFavoriteLeague(FavoriteLeagues(league.idLeague))
+            viewModel.deleteNewFavoriteLeague(favoriteLeague)
         }
     }
 
     val continueListener = View.OnClickListener {
         //Start the new fragment with all the teams.
+        findNavController().navigate(R.id.goToTeamsFavorites)
     }
 
 }

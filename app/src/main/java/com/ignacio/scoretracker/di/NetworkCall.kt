@@ -2,6 +2,7 @@ package com.ignacio.scoretracker.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.ignacio.scoretracker.select_favorites.network.FavoritesServices
 import com.ignacio.scoretracker.splash.network.InitLeagueRemoteDataSource
 import com.ignacio.scoretracker.splash.network.InitLeaguesServices
 import dagger.Module
@@ -33,5 +34,8 @@ object NetworkCall {
     @Singleton
     @Provides
     fun provideCharacterRemoteDataSource(initLeague: InitLeaguesServices) = InitLeagueRemoteDataSource(initLeague)
+
+    @Provides
+    fun provideFavoriteService(retrofit: Retrofit): FavoritesServices = retrofit.create(FavoritesServices::class.java)
 
 }

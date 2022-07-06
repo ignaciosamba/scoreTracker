@@ -1,16 +1,11 @@
-package com.ignacio.scoretracker.splash.network
+package com.ignacio.scoretracker.network
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import com.ignacio.scoretracker.splash.entities.League
-import com.ignacio.scoretracker.splash.entities.LeagueDetails
-import com.ignacio.scoretracker.splash.entities.LeagueList
-import com.ignacio.scoretracker.utils.LeaguesFilters
 import com.ignacio.scoretracker.utils.Resource
 import kotlinx.coroutines.Dispatchers
-import kotlin.math.log
 
 fun <T, A> performGetInitLeaguesOperation (databaseQuery: () -> LiveData<T>,
                                     networkCall: suspend () -> Resource<A>,

@@ -1,13 +1,11 @@
 package com.ignacio.scoretracker.select_favorites.repository
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import com.ignacio.scoretracker.database.dao.FavoriteLeaguesDao
 import com.ignacio.scoretracker.database.dao.LeagueDetailsDao
 import com.ignacio.scoretracker.select_favorites.entities.FavoriteLeagues
 import com.ignacio.scoretracker.splash.entities.LeagueDetails
-import com.ignacio.scoretracker.splash.network.performGetLeaguesDB
-import java.lang.Exception
+import com.ignacio.scoretracker.network.performGetLeaguesDB
 import javax.inject.Inject
 
 class FavoriteLeaguesRepository @Inject constructor(
@@ -29,7 +27,7 @@ class FavoriteLeaguesRepository @Inject constructor(
         return list
     }
 
-    fun getAllFavoriteLeague() : List<String>{
+    fun getAllFavoriteLeague() : List<FavoriteLeagues>{
         return favoriteLeaguesDao.getFavoriteLeagues()
     }
 

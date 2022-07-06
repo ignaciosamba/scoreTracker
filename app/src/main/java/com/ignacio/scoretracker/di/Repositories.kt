@@ -3,7 +3,10 @@ package com.ignacio.scoretracker.di
 import com.ignacio.scoretracker.database.dao.FavoriteLeaguesDao
 import com.ignacio.scoretracker.database.dao.LeagueDao
 import com.ignacio.scoretracker.database.dao.LeagueDetailsDao
+import com.ignacio.scoretracker.database.dao.TeamsDetailsDao
+import com.ignacio.scoretracker.select_favorites.network.FavoritesRemoteDataSource
 import com.ignacio.scoretracker.select_favorites.repository.FavoriteLeaguesRepository
+import com.ignacio.scoretracker.select_favorites.repository.TeamsFavoriteRepository
 import com.ignacio.scoretracker.splash.network.InitLeagueRemoteDataSource
 import com.ignacio.scoretracker.splash.repository.InitLeaguesRepository
 import dagger.Module
@@ -28,4 +31,11 @@ object Repositories {
     fun provideFavoriteLeaguesRepository(leagueDetailsLocalSource: LeagueDetailsDao,
                                          favoriteLeaguesLocalSource : FavoriteLeaguesDao
     ) = FavoriteLeaguesRepository(leagueDetailsLocalSource, favoriteLeaguesLocalSource)
+
+    @Singleton
+    @Provides
+    fun provideFavoriteTeamsRepository(teamsDetailsDao : TeamsDetailsDao,
+                                       leaguesFavoritesDao: FavoriteLeaguesDao,
+                                       favoritesRemoteDataSource: FavoritesRemoteDataSource
+    ) = TeamsFavoriteRepository(teamsDetailsDao, leaguesFavoritesDao, favoritesRemoteDataSource)
 }
